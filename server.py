@@ -17,11 +17,13 @@ while True:
         f.close()
         #Send one HTTP header line into socket
         connectionSocket.send('HTTP/1.1 200 OK\r\n\r\n'.encode())
+        print("Success")
         #Send the content of the requested file to the client
         for i in range(0, len(outputdata)):
             connectionSocket.send(outputdata[i].encode())
         connectionSocket.send("\r\n".encode())
         connectionSocket.close()
+        
     except IOError:
         #Send response message for file not found
         print("404 Not Found")
